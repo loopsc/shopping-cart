@@ -5,37 +5,47 @@ import "./Shop.css";
 const Shop = () => {
     const [shopItems, setShopItems] = useState(null);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(null);
-    const [renderItems, setRenderItems] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const generateUniqueIds = (count, max) => {
+        const ids = new Set();
+        while (ids.size < count) {
+            ids.add(Math.floor(Math.random() * max) + 1);
+        }
+        return Array.from(ids);
+    };
 
     useEffect(() => {
         async function fetchAllItems() {
             setLoading(true);
             setError(null);
+
             try {
-                const items = Array.from({ length: 10 }).map(async () => {
-                    let itemId = Math.floor(Math.random() * 20) + 1;
-                    while (renderItems.includes(itemId)) {
-                        itemId = Math.floor(Math.random() * 20) + 1;
-                    }
-                    setRenderItems((prev) => [...prev, itemId])
-                    const response = await fetch(
-                        `https://fakestoreapi.com/products/${itemId}`
-                    );
-                    if (!response.ok)
-                        throw new Error(`Response status: ${response.status}`);
-                    const data = await response.json();
+                const itemIds = generateUniqueIds(12, 20);
 
-                    return {
-                        id: data.id,
-                        name: data.title,
-                        price: data.price,
-                        img: data.image,
-                    };
-                });
+                const items = await Promise.all(
+                    itemIds.map(async (itemId) => {
+                        const response = await fetch(
+                            `https://fakestoreapi.com/products/${itemId}`
+                        );
+                        if (!response.ok)
+                            throw new Error(
+                                `Response status: ${response.status}`
+                            );
+                        const data = await response.json();
 
-                const results = await Promise.all(items);
-                setShopItems(results);
+                        console.log(data)
+
+                        return {
+                            id: data.id,
+                            title: data.title,
+                            price: data.price,
+                            img: data.image,
+                        };
+                    })
+                );
+
+                setShopItems(items);
             } catch (err) {
                 setError(err.message || "A network error was encountered");
             } finally {
@@ -53,7 +63,7 @@ const Shop = () => {
         shopItems && (
             <div>
                 <h1>Shop</h1>
-                <section>
+                <section className="shop-grid">
                     {shopItems.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
