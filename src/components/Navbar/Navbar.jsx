@@ -1,7 +1,12 @@
 import { Link } from "react-router";
 import "./Navbar.css";
 
-const Navbar = (props) => {
+const Navbar = ({ cart }) => {
+    let itemsInCart = 0;
+    if (cart.length > 0) {
+        itemsInCart = cart.reduce((total, curr) => total + curr.quantity, 0);
+    }
+
     return (
         <nav>
             <Link className="nav-link" to="home">
@@ -12,7 +17,7 @@ const Navbar = (props) => {
             </Link>
             <Link className="nav-link" to="cart">
                 Cart
-                <p className="cart-items">{props.cartItems}</p>
+                <p className="cart-items">{itemsInCart}</p>
             </Link>
         </nav>
     );

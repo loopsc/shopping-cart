@@ -4,13 +4,27 @@ import { Outlet } from "react-router";
 import { useState } from "react";
 
 const App = () => {
-    const [cartItems, setCartItems] = useState(0);
+    const [cart, setCart] = useState([]);
+
+    const addToCart = (item, numToAdd) => {
+        setCart((prev) => {
+            const exists = prev.find((p) => p.id === item.id);
+            if (exists) {
+                return prev.map((p) => p.id === item.id ? {...p, quantity: p.quantity + numToAdd} : p)
+            }
+            return [...prev, {...item, quantity: numToAdd}]
+        })
+    }
+
+    const removeFromCart = (item) => {
+        setCart((prev) => prev.filter((p) => p.id !== item.id))
+    }
 
     return (
         <div className="main">
-            <Navbar cartItems={cartItems} />
+            <Navbar cart={cart} />
             <div className="page-container">
-                <Outlet context={{ cartItems, setCartItems }} />
+                <Outlet context={{ cart, addToCart, removeFromCart }} />
             </div>
         </div>
     );

@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { useOutletContext } from "react-router";
 import "./ProductCard.css";
 
 const ProductCard = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useOutletContext();
 
     const decrement = () => setQuantity((prev) => Math.max(1, prev - 1));
     const increment = () => setQuantity((prev) => prev + 1);
-    const handleAddToCart = () =>
-        console.log(`Added ${product.title}(s) to card`);
 
     return (
         <div className="product-card">
@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
                 />
                 <button onClick={increment}>+</button>
             </div>
-            <button onClick={handleAddToCart}>Add to cart</button>
+            <button onClick={() => addToCart(product, quantity)}>Add to cart</button>
         </div>
     );
 };

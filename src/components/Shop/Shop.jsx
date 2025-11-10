@@ -34,8 +34,6 @@ const Shop = () => {
                             );
                         const data = await response.json();
 
-                        console.log(data)
-
                         return {
                             id: data.id,
                             title: data.title,
