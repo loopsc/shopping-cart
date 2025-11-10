@@ -1,0 +1,71 @@
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    /* width: 200px; */
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: auto;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Title and price */
+.product-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.product-img {
+    width: 50%;
+}
+
+.product-price {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Quantity controls */
+.controls-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-self: bottom;
+}
+
+.controls-container input {
+    width: 50px;
+    text-align: center;
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Buttons */
+.controls-container button,
+.product-card > button:last-child {
+    padding: 0.25rem 0.75rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.controls-container button:hover,
+.product-card > button:last-child:hover {
+    background-color: #0056b3;
+}

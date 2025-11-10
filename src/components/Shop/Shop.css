@@ -1,0 +1,6 @@
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, clamp(200px, 20%, 350px));
+    gap: 1rem;
+    justify-content: center;
+}
