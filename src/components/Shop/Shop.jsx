@@ -61,7 +61,7 @@ const Shop = () => {
         shopItems && (
             <div>
                 <h1>Shop</h1>
-                <section className="shop-grid">
+                <section className="shop-section">
                     {shopItems.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
