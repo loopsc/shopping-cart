@@ -17,15 +17,21 @@ const ProductCard = ({ product }) => {
             </h3>
             <p className="product-price">${product.price}</p>
             <div className="controls-container">
-                <button onClick={decrement}>-</button>
-                <input
-                    type="number"
-                    value={quantity}
-                    onChange={(e) => setQuantity(Number(e.target.value) || 1)}
-                />
-                <button onClick={increment}>+</button>
+                <div className="quantity-controls">
+                    <button onClick={decrement}>-</button>
+                    <input
+                        type="number"
+                        value={quantity}
+                        onChange={(e) =>
+                            setQuantity(Number(e.target.value) || 1)
+                        }
+                    />
+                    <button onClick={increment}>+</button>
+                </div>
+                <button onClick={() => addToCart(product, quantity)}>
+                    Add to cart
+                </button>
             </div>
-            <button onClick={() => addToCart(product, quantity)}>Add to cart</button>
         </div>
     );
 };

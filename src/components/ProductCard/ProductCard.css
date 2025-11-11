@@ -52,17 +52,19 @@
     font-size: 1rem;
     color: #555;
     margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 /* Quantity controls */
-.controls-container {
+.quantity-controls {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     justify-self: bottom;
 }
 
-.controls-container input {
+.quantity-controls input {
     width: 50px;
     text-align: center;
     padding: 0.25rem;
@@ -83,7 +85,7 @@
     transition: background-color 0.2s;
 }
 
-.controls-container button:hover,
+.quantity-controls button:hover,
 .product-card > button:last-child:hover {
     background-color: #0056b3;
 }
@@ -92,6 +94,17 @@
     inline-size: 250px;
     aspect-ratio: 1;
     object-fit: contain;
+}
+
+.quantity-controls {
+    justify-self: end;
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: auto;
 }
 
 @media (max-width: 1300px) {
