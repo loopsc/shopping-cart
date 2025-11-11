@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Shop.css";
+import { useOutletContext } from "react-router";
+import { RefreshCcw } from "lucide-react";
 
 const Shop = () => {
-    const [shopItems, setShopItems] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const { shopItems, setShopItems } = useOutletContext();
 
     const generateUniqueIds = (count, max) => {
         const ids = new Set();
@@ -15,44 +17,41 @@ const Shop = () => {
         return Array.from(ids);
     };
 
-    useEffect(() => {
-        async function fetchAllItems() {
-            setLoading(true);
-            setError(null);
+    const fetchShopItems = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const itemIds = generateUniqueIds(12, 20);
 
-            try {
-                const itemIds = generateUniqueIds(12, 20);
+            const items = await Promise.all(
+                itemIds.map(async (itemId) => {
+                    const response = await fetch(
+                        `https://fakestoreapi.com/products/${itemId}`
+                    );
+                    if (!response.ok)
+                        throw new Error(`Response status: ${response.status}`);
+                    const data = await response.json();
 
-                const items = await Promise.all(
-                    itemIds.map(async (itemId) => {
-                        const response = await fetch(
-                            `https://fakestoreapi.com/products/${itemId}`
-                        );
-                        if (!response.ok)
-                            throw new Error(
-                                `Response status: ${response.status}`
-                            );
-                        const data = await response.json();
+                    return {
+                        id: data.id,
+                        title: data.title,
+                        price: data.price,
+                        img: data.image,
+                    };
+                })
+            );
 
-                        return {
-                            id: data.id,
-                            title: data.title,
-                            price: data.price,
-                            img: data.image,
-                        };
-                    })
-                );
-
-                setShopItems(items);
-            } catch (err) {
-                setError(err.message || "A network error was encountered");
-            } finally {
-                setLoading(false);
-            }
+            setShopItems(items);
+        } catch (err) {
+            setError(err.message || "A network error was encountered");
+        } finally {
+            setLoading(false);
         }
+    };
 
-        fetchAllItems();
-    }, []);
+    useEffect(() => {
+        if (!shopItems) fetchShopItems();
+    }, [shopItems]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
@@ -60,7 +59,12 @@ const Shop = () => {
     return (
         shopItems && (
             <div>
-                <h1>Shop</h1>
+                <div className="shop-heading-group">
+                    <h1>Shop</h1>
+                    <button className="refresh-button" onClick={fetchShopItems}>
+                        <RefreshCcw />
+                    </button>
+                </div>
                 <section className="shop-section">
                     {shopItems.map((product) => (
                         <ProductCard key={product.id} product={product} />

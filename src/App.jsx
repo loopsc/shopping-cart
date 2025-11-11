@@ -5,6 +5,8 @@ import { useState } from "react";
 
 const App = () => {
     const [cart, setCart] = useState([]);
+    const [shopItems, setShopItems] = useState(null);
+
 
     const addToCart = (item, numToAdd) => {
         setCart((prev) => {
@@ -29,7 +31,7 @@ const App = () => {
         <div className="main">
             <Navbar cart={cart} />
             <div className="page-container">
-                <Outlet context={{ cart, addToCart, removeFromCart }} />
+                <Outlet context={{ cart, addToCart, removeFromCart, shopItems, setShopItems }} />
             </div>
         </div>
     );

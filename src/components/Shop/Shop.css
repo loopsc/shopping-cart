@@ -5,3 +5,18 @@
     justify-content: center;
     padding: 2rem;
 }
+
+.shop-heading-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.refresh-button {
+    background-color: rgb(148, 126, 52);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+}
