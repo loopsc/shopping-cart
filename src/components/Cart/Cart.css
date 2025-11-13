@@ -64,3 +64,10 @@ ul {
 .page-container {
     flex-direction: row;
 }
+
+.cart-quantity-input {
+    max-width: 5rem;
+    min-height: 2rem;
+    border-radius: 5px;
+    padding: .3rem;
+}

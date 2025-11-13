@@ -4,7 +4,9 @@ import { Outlet } from "react-router";
 import { useState } from "react";
 
 const App = () => {
+    // Keep track of the items in the cart
     const [cart, setCart] = useState([]);
+    // Keep track of the items generated in the shop page
     const [shopItems, setShopItems] = useState(null);
 
 
@@ -31,7 +33,7 @@ const App = () => {
         <div className="main">
             <Navbar cart={cart} />
             <div className="page-container">
-                <Outlet context={{ cart, addToCart, removeFromCart, shopItems, setShopItems }} />
+                <Outlet context={{ cart, addToCart, setCart, removeFromCart, shopItems, setShopItems }} />
             </div>
         </div>
     );
