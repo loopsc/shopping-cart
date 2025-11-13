@@ -51,7 +51,7 @@ const Shop = () => {
 
     useEffect(() => {
         if (!shopItems) fetchShopItems();
-    }, [shopItems]);
+    }, []);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
