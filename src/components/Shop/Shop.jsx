@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import "./Shop.css";
+import styles from "./Shop.module.css";
 import { useOutletContext } from "react-router";
 import { RefreshCcw } from "lucide-react";
 
@@ -59,13 +59,16 @@ const Shop = () => {
     return (
         shopItems && (
             <div>
-                <div className="shop-heading-group">
+                <div className={styles.shopHeadingGroup}>
                     <h1>Shop</h1>
-                    <button className="refresh-button" onClick={fetchShopItems}>
+                    <button
+                        className={styles.refreshButton}
+                        onClick={fetchShopItems}
+                    >
                         <RefreshCcw />
                     </button>
                 </div>
-                <section className="shop-section">
+                <section className={styles.shopSection}>
                     {shopItems.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}

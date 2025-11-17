@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
-import "./App.css";
+import styles from "./App.module.css";
 import { Outlet } from "react-router";
 import { useState } from "react";
 
@@ -8,7 +8,6 @@ const App = () => {
     const [cart, setCart] = useState([]);
     // Keep track of the items generated in the shop page
     const [shopItems, setShopItems] = useState(null);
-
 
     const addToCart = (item, numToAdd) => {
         setCart((prev) => {
@@ -30,10 +29,19 @@ const App = () => {
     };
 
     return (
-        <div className="main">
+        <div className={styles.main}>
             <Navbar cart={cart} />
-            <div className="page-container">
-                <Outlet context={{ cart, addToCart, setCart, removeFromCart, shopItems, setShopItems }} />
+            <div className={styles.outlet}>
+                <Outlet
+                    context={{
+                        cart,
+                        addToCart,
+                        setCart,
+                        removeFromCart,
+                        shopItems,
+                        setShopItems,
+                    }}
+                />
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-.product-card {
+.productCard {
     border: 1px solid #ddd;
     border-radius: 12px;
     padding: 1rem;
@@ -15,13 +15,13 @@
     min-height: 470px;
 }
 
-.product-card:hover {
+.productCard:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Title and price */
-.product-title {
+.productTitle {
     font-size: 1.2rem;
     font-weight: 500;
 
@@ -32,7 +32,7 @@
     text-overflow: ellipsis;
 }
 
-.product-title:hover::after {
+.productTitle:hover::after {
     content: attr(data-full);
     position: absolute;
     left: 0;
@@ -44,11 +44,11 @@
     z-index: 10;
 }
 
-.product-img {
+.productImg {
     width: 50%;
 }
 
-.product-price {
+.productPrice {
     font-size: 1rem;
     color: #555;
     margin: 0;
@@ -57,13 +57,13 @@
 }
 
 /* Quantity controls */
-.quantity-controls {
+.quantityControls {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.quantity-controls input {
+.quantityControls input {
     width: 50px;
     text-align: center;
     padding: 0.25rem;
@@ -72,8 +72,8 @@
 }
 
 /* Buttons */
-.controls-container button,
-.product-card > button:last-child {
+.controlsContainer button,
+.productCard > button:last-child {
     padding: 0.25rem 0.75rem;
     border: none;
     border-radius: 6px;
@@ -84,18 +84,18 @@
     transition: background-color 0.2s;
 }
 
-.quantity-controls button:hover,
-.product-card > button:last-child:hover {
+.quantityControls button:hover,
+.productCard > button:last-child:hover {
     background-color: #0056b3;
 }
 
-.product-card img {
+.productCard img {
     inline-size: 250px;
     aspect-ratio: 1;
     object-fit: contain;
 }
 
-.controls-container {
+.controlsContainer {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -103,11 +103,11 @@
 }
 
 @media (max-width: 1300px) {
-    .product-card img {
+    .productCard img {
         inline-size: 120px;
     }
 
-    .product-card {
+    .productCard {
         min-height: 300px;
     }
 }

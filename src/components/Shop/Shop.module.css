@@ -1,4 +1,4 @@
-.shop-section {
+.shopSection {
     display: grid;
     grid-template-columns: repeat(auto-fit, clamp(200px, 20%, 350px));
     gap: 1rem;
@@ -6,12 +6,12 @@
     padding: 2rem;
 }
 
-.shop-heading-group {
+.shopHeadingGroup {
     display: flex;
     gap: 1rem;
 }
 
-.refresh-button {
+.refreshButton {
     background-color: rgb(148, 126, 52);
     border-radius: 50%;
     display: flex;

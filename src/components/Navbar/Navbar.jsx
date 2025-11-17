@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 
 const Navbar = ({ cart }) => {
     let itemsInCart = 0;
@@ -9,15 +9,15 @@ const Navbar = ({ cart }) => {
 
     return (
         <nav>
-            <Link className="nav-link" to="home">
+            <Link className={styles.navLink} to="home">
                 Home
             </Link>
-            <Link className="nav-link" to="shop">
+            <Link className={styles.navLink} to="shop">
                 Shop
             </Link>
-            <Link className="nav-link" to="cart">
+            <Link className={styles.navLink} to="cart">
                 Cart
-                <p className="cart-items">{itemsInCart}</p>
+                <p className={styles.cartItems}>{itemsInCart}</p>
             </Link>
         </nav>
     );

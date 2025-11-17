@@ -1,4 +1,4 @@
-import "./Cart.css";
+import styles from "./Cart.module.css";
 import { useOutletContext } from "react-router";
 import { Trash2 } from "lucide-react";
 
@@ -11,31 +11,31 @@ const Cart = () => {
     );
 
     return (
-        <div className="container">
-            <ul className="headers">
+        <div className={styles.container}>
+            <ul className={styles.headers}>
                 <li></li>
                 <li>Title</li>
                 <li>Price</li>
                 <li>Quantity</li>
             </ul>
 
-            <div className="items-container">
+            <div className={styles.itemsContainer}>
                 {cart.map((item) => (
-                    <div className="cart-item" key={item.id}>
+                    <div className={styles.cartItem} key={item.id}>
                         <img
-                            className="item-image"
+                            className={styles.itemImage}
                             src={item.img}
                             alt="item image"
                         />
-                        <p className="item-title">{item.title}</p>
+                        <p className={styles.itemTitle}>{item.title}</p>
                         <p>${item.price}</p>
-                        <div className="quantity-controls">
+
+                        <div className={styles.quantityControls}>
                             <input
-                                className="cart-quantity-input"
+                                className={styles.cartQuantityInput}
                                 type="number"
                                 value={item.quantity}
                                 min="1"
-                                // Change price function
                                 onChange={(e) =>
                                     setCart((prev) =>
                                         prev.map((cartItem) =>
@@ -51,11 +51,10 @@ const Cart = () => {
                                     )
                                 }
                             />
+
                             <button
-                                className="remove-item-button"
-                                onClick={() => {
-                                    removeFromCart(item);
-                                }}
+                                className={styles.removeItemButton}
+                                onClick={() => removeFromCart(item)}
                             >
                                 <Trash2
                                     size={16}
@@ -67,8 +66,9 @@ const Cart = () => {
                     </div>
                 ))}
             </div>
-            <div className="total-price">
-                <p className="total-text">${total.toFixed(2)}</p>
+
+            <div className={styles.totalPrice}>
+                <p className={styles.totalText}>${total.toFixed(2)}</p>
             </div>
         </div>
     );
