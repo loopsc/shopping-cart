@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import styles from "./Navbar.module.css";
 
-const Navbar = ({ cart }) => {
+const Navbar = ({ cart = [] }) => {
     let itemsInCart = 0;
     if (cart.length > 0) {
         itemsInCart = cart.reduce((total, curr) => total + curr.quantity, 0);
