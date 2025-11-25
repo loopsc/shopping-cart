@@ -55,9 +55,10 @@ const Cart = () => {
                             <button
                                 className={styles.removeItemButton}
                                 onClick={() => removeFromCart(item)}
+                                data-testid="remove-item-button"
                             >
                                 <Trash2
-                                    size={16}
+                                    size={14}
                                     color="#ce0000"
                                     strokeWidth={1.5}
                                 />
@@ -68,7 +69,7 @@ const Cart = () => {
             </div>
 
             <div className={styles.totalPrice}>
-                <p className={styles.totalText}>${total.toFixed(2)}</p>
+                <p data-testid="total-price" className={styles.totalText}>${total.toFixed(2)}</p>
             </div>
         </div>
     );

@@ -71,3 +71,13 @@ ul {
     border-radius: 5px;
     padding: .3rem;
 }
+
+.quantityControls {
+    display: flex;
+    gap: 0.7rem;
+}
+
+.removeItemButton {
+    padding: 0.5rem;
+    border: 1px solid white;
+}

@@ -9,13 +9,13 @@ const Navbar = ({ cart = [] }) => {
 
     return (
         <nav>
-            <Link className={styles.navLink} to="home">
+            <Link data-testid="home-link" className={styles.navLink} to="/">
                 Home
             </Link>
-            <Link className={styles.navLink} to="shop">
+            <Link data-testid="shop-link" className={styles.navLink} to="shop">
                 Shop
             </Link>
-            <Link className={styles.navLink} to="cart">
+            <Link data-testid="cart-link" className={styles.navLink} to="cart">
                 Cart
                 <p className={styles.cartItems}>{itemsInCart}</p>
             </Link>

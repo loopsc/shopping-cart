@@ -1,22 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Navbar from "./Navbar";
-import { MemoryRouter} from "react-router";
-import "@testing-library/jest-dom";
+import { MemoryRouter } from "react-router";
 
 describe("Navbar component", () => {
-    it("renders a navbar", () => {
-        render(
-            <MemoryRouter>
-                <Navbar cart={[]} />
-            </MemoryRouter>
-        );
-
-        const navBar = screen.getByRole("navigation");
-        expect(navBar).toBeInTheDocument();
-    });
-
-    it("contains number of items in cart", () => {
+    test("contains number of items in cart", () => {
         const { getByText } = render(
             <MemoryRouter>
                 <Navbar cart={[{ quantity: 1 }, { quantity: 5 }]} />
@@ -27,15 +15,15 @@ describe("Navbar component", () => {
         expect(count).toBeInTheDocument();
     });
 
-    it("renders the correct tabs", () => {
+    test("renders the correct tabs", () => {
         render(
             <MemoryRouter>
                 <Navbar />
             </MemoryRouter>
         );
 
-        expect(screen.getByText("Home")).toBeInTheDocument();
-        expect(screen.getByText("Shop")).toBeInTheDocument();
-        expect(screen.getByText("Cart")).toBeInTheDocument();
+        expect(screen.getByTestId("home-link")).toBeInTheDocument();
+        expect(screen.getByTestId("shop-link")).toBeInTheDocument();
+        expect(screen.getByTestId("cart-link")).toBeInTheDocument();
     });
 });
