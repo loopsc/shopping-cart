@@ -69,7 +69,9 @@ const Cart = () => {
             </div>
 
             <div className={styles.totalPrice}>
-                <p data-testid="total-price" className={styles.totalText}>${total.toFixed(2)}</p>
+                <p data-testid="total-price" className={styles.totalText}>
+                    ${total.toFixed(2)}
+                </p>
             </div>
         </div>
     );

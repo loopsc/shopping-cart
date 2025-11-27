@@ -9,13 +9,15 @@ const ProductCard = ({ product }) => {
   const decrement = () => setQuantity((prev) => Math.max(1, prev - 1));
   const increment = () => setQuantity((prev) => prev + 1);
 
+  console.log(product)
+
   return (
     <div className={styles.productCard}>
-      <img className={styles.productImg} src={product.img} alt="Product" />
-      <h3 className={styles.productTitle} data-full={product.title}>
+      <img data-testid="test-image" className={styles.productImg} src={product.img} alt="Product" />
+      <h3 data-testid="test-title" className={styles.productTitle} data-full={product.title}>
         {product.title}
       </h3>
-      <p className={styles.productPrice}>${product.price}</p>
+      <p data-testid="test-price" className={styles.productPrice}>${product.price}</p>
 
       <div className={styles.controlsContainer}>
         <div className={styles.quantityControls}>
