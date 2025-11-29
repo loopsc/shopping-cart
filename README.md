@@ -1,6 +1,6 @@
 # Deployment
 
-- https://loopsc-shopping-cart.netlify.app/shop
+- https://loopsc-shopping-cart.netlify.app
 
 # React + Vite
 
