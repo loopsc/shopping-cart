@@ -54,7 +54,12 @@ const Shop = () => {
     }, []);
 
     if (loading) return <p>Loading...</p>;
-    if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
+    if (error)
+        return (
+            <p data-testid="test-error-msg" style={{ color: "red" }}>
+                Error: {error}
+            </p>
+        );
 
     return (
         shopItems && (
@@ -64,6 +69,7 @@ const Shop = () => {
                     <button
                         className={styles.refreshButton}
                         onClick={fetchShopItems}
+                        data-testid="test-refresh"
                     >
                         <RefreshCcw />
                     </button>
