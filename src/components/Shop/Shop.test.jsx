@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import Shop from "./Shop";
 import { MemoryRouter, Route, Routes, Outlet } from "react-router";
-import userEvent from "@testing-library/user-event";
 
 beforeEach(() => {
     vi.resetAllMocks();
