@@ -1,14 +1,17 @@
 import styles from "./Cart.module.css";
 import { useOutletContext } from "react-router";
 import { Trash2 } from "lucide-react";
+import { useMemo } from "react";
 
 const Cart = () => {
     const { cart, setCart, removeFromCart } = useOutletContext();
 
-    const total = cart.reduce(
-        (total, curr) => total + curr.price * curr.quantity,
-        0
-    );
+    const total = useMemo(() => {
+        return cart.reduce(
+            (total, curr) => total + curr.price * curr.quantity,
+            0
+        );
+    }, [cart]);
 
     return (
         <div className={styles.container}>

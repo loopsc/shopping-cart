@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar/Navbar";
 import styles from "./App.module.css";
 import { Outlet } from "react-router";
-import { useState } from "react";
+import { useState, Profiler } from "react";
 
 const App = () => {
     // Keep track of the items in the cart
@@ -28,20 +28,40 @@ const App = () => {
         setCart((prev) => prev.filter((p) => p.id !== item.id));
     };
 
+    const onRender = (
+        id,
+        phase,
+        actualDuration,
+        baseDuration,
+        startTime,
+        commitTime
+    ) => {
+        console.log({
+            id,
+            phase,
+            actualDuration,
+            baseDuration,
+            startTime,
+            commitTime,
+        });
+    };
+
     return (
         <div className={styles.main}>
             <Navbar cart={cart} />
             <div className={styles.outlet}>
-                <Outlet
-                    context={{
-                        cart,
-                        addToCart,
-                        setCart,
-                        removeFromCart,
-                        shopItems,
-                        setShopItems,
-                    }}
-                />
+                <Profiler id="route-profiler" onRender={onRender}>
+                    <Outlet
+                        context={{
+                            cart,
+                            addToCart,
+                            setCart,
+                            removeFromCart,
+                            shopItems,
+                            setShopItems,
+                        }}
+                    />
+                </Profiler>
             </div>
         </div>
     );
