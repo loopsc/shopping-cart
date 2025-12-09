@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar/Navbar";
 import styles from "./App.module.css";
 import { Outlet } from "react-router";
 import { useState, Profiler } from "react";
+import { ShopContext, CartContext } from "./contexts";
 
 const App = () => {
     // Keep track of the items in the cart
@@ -51,16 +52,22 @@ const App = () => {
             <Navbar cart={cart} />
             <div className={styles.outlet}>
                 <Profiler id="route-profiler" onRender={onRender}>
-                    <Outlet
-                        context={{
-                            cart,
-                            addToCart,
-                            setCart,
-                            removeFromCart,
-                            shopItems,
-                            setShopItems,
-                        }}
-                    />
+                    <ShopContext.Provider value={{ shopItems, setShopItems }}>
+                        <CartContext.Provider
+                            value={{ cart, setCart, addToCart, removeFromCart }}
+                        >
+                            <Outlet
+                                // context={{
+                                //     cart,
+                                //     addToCart,
+                                //     setCart,
+                                //     removeFromCart,
+                                //     shopItems,
+                                //     setShopItems,
+                                // }}
+                            />
+                        </CartContext.Provider>
+                    </ShopContext.Provider>
                 </Profiler>
             </div>
         </div>

@@ -1,10 +1,12 @@
 import styles from "./Cart.module.css";
-import { useOutletContext } from "react-router";
+// import { useOutletContext } from "react-router";
 import { Trash2 } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo, useContext } from "react";
+import { CartContext } from "../../contexts";
 
 const Cart = () => {
-    const { cart, setCart, removeFromCart } = useOutletContext();
+    // const { cart, setCart, removeFromCart } = useOutletContext();
+    const { cart, setCart, removeFromCart } = useContext(CartContext);
 
     const total = useMemo(() => {
         return cart.reduce(

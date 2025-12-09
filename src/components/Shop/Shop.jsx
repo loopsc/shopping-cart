@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import styles from "./Shop.module.css";
-import { useOutletContext } from "react-router";
 import { RefreshCcw } from "lucide-react";
+import { ShopContext } from "../../contexts";
 
 const Shop = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    const { shopItems, setShopItems } = useOutletContext();
+
+    const { shopItems, setShopItems } = useContext(ShopContext);
 
     const generateUniqueIds = (count, max) => {
         const ids = new Set();
