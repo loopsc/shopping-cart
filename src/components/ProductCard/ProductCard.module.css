@@ -1,98 +1,61 @@
 .productCard {
-    border: 1px solid #ddd;
+    border: 1px solid #e5e7eb;
     border-radius: 12px;
     padding: 1rem;
-    background-color: #fff;
+    background-color: #ffffff;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
-    /* width: 200px; */
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: auto;
     min-height: 470px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .productCard:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* Title and price */
+.productImg {
+    width: 60%;
+    max-width: 250px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
 .productTitle {
     font-size: 1.2rem;
     font-weight: 500;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    color: #1f2933;
+    line-height: 1.3;
     overflow: hidden;
     text-overflow: ellipsis;
+    position: relative;
 }
 
 .productTitle:hover::after {
     content: attr(data-full);
     position: absolute;
-    left: 0;
-    background: rgba(0, 0, 0, 0.527);
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(31, 41, 51, 0.9);
     color: white;
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     white-space: nowrap;
     z-index: 10;
-}
-
-.productImg {
-    width: 50%;
+    font-size: 0.85rem;
 }
 
 .productPrice {
     font-size: 1rem;
-    color: #555;
-    margin: 0;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-/* Quantity controls */
-.quantityControls {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.quantityControls input {
-    width: 50px;
-    text-align: center;
-    padding: 0.25rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-/* Buttons */
-.controlsContainer button,
-.productCard > button:last-child {
-    padding: 0.25rem 0.75rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.2s;
-}
-
-.quantityControls button:hover,
-.productCard > button:last-child:hover {
-    background-color: #0056b3;
-}
-
-.productCard img {
-    inline-size: 250px;
-    aspect-ratio: 1;
-    object-fit: contain;
+    color: #4b5563;
+    font-weight: 500;
+    margin: 0.25rem 0 0.5rem 0;
 }
 
 .controlsContainer {
@@ -100,14 +63,83 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-top: auto;
+    width: 100%;
+    align-items: center;
+}
+
+.quantityControls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantityControls button {
+    padding: 0.35rem 0.65rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #2563eb;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.quantityControls button:hover {
+    /* background: linear-gradient(135deg, #e0e7ff, #f1f5ff); */
+    background-color: #6593f7;
+}
+
+.quantityControls input {
+    width: 50px;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.controlsContainer > button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.15s;
+    width: 100%;
+}
+
+.controlsContainer > button:hover {
+    /* background: linear-gradient(20deg, #5d7eeb, #f1f5ff); */
+    background-color: #6593f7;
+
+    transform: translateY(-1px);
 }
 
 @media (max-width: 1300px) {
-    .productCard img {
-        inline-size: 120px;
+    .productCard {
+        min-height: 320px;
     }
 
+    .productImg {
+        width: 50%;
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
     .productCard {
         min-height: 300px;
+        padding: 0.75rem;
+    }
+
+    .productTitle {
+        font-size: 1.1rem;
+    }
+
+    .controlsContainer > button {
+        font-size: 0.9rem;
     }
 }

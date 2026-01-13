@@ -5,7 +5,6 @@ import { useMemo, useContext } from "react";
 import { CartContext } from "../../contexts";
 
 const Cart = () => {
-    // const { cart, setCart, removeFromCart } = useOutletContext();
     const { cart, setCart, removeFromCart } = useContext(CartContext);
 
     const total = useMemo(() => {

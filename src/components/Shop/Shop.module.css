@@ -1,22 +1,69 @@
-.shopSection {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, clamp(200px, 20%, 350px));
-    gap: 1rem;
-    justify-content: center;
-    padding: 2rem;
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
 }
 
 .shopHeadingGroup {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
     gap: 1rem;
 }
 
+.shopHeadingGroup h1 {
+    font-size: 2.2rem;
+    color: #1f2933;
+    margin: 0;
+}
+
 .refreshButton {
-    background-color: rgb(148, 126, 52);
+    background-color: #2563eb;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     padding: 10px;
+    border: none;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.refreshButton:hover {
+    background: linear-gradient(135deg, #e0e7ff, #f1f5ff);
+    transform: rotate(20deg);
+}
+
+.shopSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, clamp(200px, 20%, 350px));
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.statusMsg {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #374151;
+}
+
+.statusMsgError {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ef4444;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
 }

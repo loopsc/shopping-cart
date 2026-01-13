@@ -8,7 +8,7 @@ const Navbar = ({ cart = [] }) => {
     }
 
     return (
-        <nav>
+        <nav className={styles.navbar}>
             <Link data-testid="home-link" className={styles.navLink} to="/">
                 Home
             </Link>

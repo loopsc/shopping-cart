@@ -1,12 +1,10 @@
 import { useContext, useState } from "react";
-// import { useOutletContext } from "react-router";
 import styles from "./ProductCard.module.css";
 import { CartContext } from "../../contexts";
 
 const ProductCard = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
-    // const { addToCart } = useOutletContext();
-    const { addToCart } = useContext(CartContext)
+    const { addToCart } = useContext(CartContext);
 
     const decrement = () => setQuantity((prev) => Math.max(1, prev - 1));
     const increment = () => setQuantity((prev) => prev + 1);

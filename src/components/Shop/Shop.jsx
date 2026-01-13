@@ -54,17 +54,17 @@ const Shop = () => {
         if (!shopItems) fetchShopItems();
     }, []);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p className={styles.statusMsg}>Loading...</p>;
     if (error)
         return (
-            <p data-testid="test-error-msg" style={{ color: "red" }}>
+            <p className={styles.statusMsgError} data-testid="test-error-msg">
                 Error: {error}
             </p>
         );
 
     return (
         shopItems && (
-            <div>
+            <main className={styles.page}>
                 <div className={styles.shopHeadingGroup}>
                     <h1>Shop</h1>
                     <button
@@ -75,12 +75,13 @@ const Shop = () => {
                         <RefreshCcw />
                     </button>
                 </div>
+
                 <section className={styles.shopSection}>
                     {shopItems.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
                 </section>
-            </div>
+            </main>
         )
     );
 };

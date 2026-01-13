@@ -57,19 +57,22 @@ const App = () => {
                             value={{ cart, setCart, addToCart, removeFromCart }}
                         >
                             <Outlet
-                                // context={{
-                                //     cart,
-                                //     addToCart,
-                                //     setCart,
-                                //     removeFromCart,
-                                //     shopItems,
-                                //     setShopItems,
-                                // }}
+                            // context={{
+                            //     cart,
+                            //     addToCart,
+                            //     setCart,
+                            //     removeFromCart,
+                            //     shopItems,
+                            //     setShopItems,
+                            // }}
                             />
                         </CartContext.Provider>
                     </ShopContext.Provider>
                 </Profiler>
             </div>
+            <footer className={styles.footer}>
+                <p>© {new Date().getFullYear()} Loopsc</p>
+            </footer>
         </div>
     );
 };

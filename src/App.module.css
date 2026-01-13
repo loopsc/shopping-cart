@@ -13,3 +13,12 @@
 .outlet {
     padding: 2rem;
 }
+
+.footer {
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    color: #64748b;
+}
